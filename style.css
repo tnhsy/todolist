@@ -1,0 +1,142 @@
+/* General */
+@import url("https://fonts.googleapis.com/css?family=Lato");
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #9499a1;
+  width: 100%;
+}
+#canvas{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  border-radius:5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
+  background: #fff;
+  transition: height 4s;
+  width: 50%;
+}
+/* General end */
+
+/* add input - This is the input for adding todo task */
+.addInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccd0d9;
+  color: #9499a1;
+  font-family: "Lato";
+  font-size: 17px;
+  line-height: 36px;
+  margin-right: 10px;
+}
+.addInput:hover{
+  border-bottom: 1px solid #2fc495;
+  transition: 0.2s ease-in-out;
+}
+.addInput:focus {
+  outline: none;
+}
+.addInput::placeholder {
+  color: #ccd0d9;
+}
+/* ---- add input end ----*/
+
+
+/* ------------- */
+/* The todo list */
+/* ------------- */
+.todoList {
+  list-style: none;
+  padding: 0;
+}
+.todoList li {
+  width: 100%;
+  padding: 12px 0;
+}
+
+/* todolist - checkbox */
+.todoList li .checkbox {
+  position: absolute;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: #e6e9ee;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.todoList li .checkbox:hover{
+    background-color: #2fc495;
+    transition: 0.2s ease-in-out;
+}
+
+/* todolist - the todo task content */
+.todoList li .text {
+  margin-left: 35px;
+  font-size: 17px;
+  line-height: 20px;
+  cursor: default;
+  transition: 0.2s ease-in-out;
+}
+
+/* todolist - the edit and delete button css */
+.todoList li .delete {
+  cursor: pointer;
+  border: none;
+  color: #ccd0d9;
+  opacity: 0;
+}
+.todoList li:hover .delete {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
+  outline: none;
+}
+
+/* todolist - in editMood, the editInput's css */
+.editInput{
+  position: relative;
+  left: 34px;
+  height: 18px;
+  width: 80%;
+  font-size: 16px;
+  outline: none;
+}
+
+/* todolist - when the task is complete! many element's css will be change! */
+.todoList li.completed .checkbox {
+  height: 8px;
+  width: 8px;
+  margin: 6px;
+  background-color: #2fc495;
+  transition: 0.2s ease-in-out;
+}
+.todoList li.completed .text {
+  position: relative;
+  font-size: 16px;
+  color: #ccd0d9;
+  transition: 0.2s ease-in;
+}
+.todoList li.completed .text:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 11px;
+  left: -2%;
+  width: 104%;
+  height: 1px;
+  background-color: #ccd0d9;
+}
+
+/* ----------------- */
+/* The todo list end */
+/* ---------------- */

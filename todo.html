@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do list</title>
+    <!-- Enable vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- Css file -->
+    <!-- import icon from font awesome --> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+
+                <!-- add input: this input is for adding todo task -->
+                <input class="addInput" placeholder="Add a new todo"
+                v-model="newTodo"
+                @keyup.enter="addTodo"> <!-- v-on:keyup.enter, press enter to run the addTodo function -->
+    
+                <!-- the todoList -->
+                <ul class="todoList">
+                    <li v-for="(todo, index) in todoList"
+                        :class="{completed: todo.completed}"> <!-- use v-bind:class to toggle the "completed" class. "todo.completed" it's a value, it's either true or false. -->
+                        
+                        <!-- checkbox - trigger the task is complete or not -->
+                        <span class="checkbox"
+                        @click="completeTodo(todo)"></span> <!-- v-on:click, run the completeTodo function -->
+
+                        <!-- the task content -->
+                        <span class="text"
+                        v-show="!todo.editMood">{{todo.task}}</span> <!-- show the content if it IS NOT in editMood -->
+
+                        <!-- edit button -->
+                        <button class="delete far fa-edit fa-sm"
+                        v-show="!todo.editMood"
+                        @click="editTodo(index)"></button> <!-- v-on:click, run the editTodo function -->
+
+                        <!-- remove button -->
+                        <button class="delete far fa-trash-alt fa-sm"
+                        v-show="!todo.editMood" 
+                        @click="removeTodo(todo)"></button> <!-- v-on:click, run the removeTodo function -->
+
+                        <!-- This input is for edit todo task -->
+                        <input class="editInput"
+                        v-show="todo.editMood"
+                        v-model="content"
+                        @keyup.enter="editTodoSave(index)"> <!-- show the content if *the item* IS in editMood, press enter to run the editTodoSave function *for the item* -->
+                    </li>
+                </ul> <!-- todoList end -->
+
+        </div> <!-- container end -->
+    </div> <!-- vue app end -->
+
+    <div id="canvas"></div>
+
+    <!-- JS file -->
+    <script src="vue.js"></script>
+    <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+    <script src="particles.js"></script>
+</body>
+</html>
